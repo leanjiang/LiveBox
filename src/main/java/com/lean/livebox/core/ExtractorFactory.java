@@ -1,8 +1,5 @@
-package com.lean.livebox;
+package com.lean.livebox.core;
 
-import com.lean.livebox.core.Extractor;
-import com.lean.livebox.core.Live;
-import com.lean.livebox.core.Platform;
 import com.lean.livebox.core.extractors.DouyuExtractor;
 import com.lean.livebox.core.extractors.PandaExtractor;
 import com.lean.livebox.core.extractors.ZhanqiExtractor;
@@ -13,17 +10,10 @@ import java.util.regex.Pattern;
 /**
  * Created by lean on 16/7/5.
  */
-public class LiveBox {
+public class ExtractorFactory {
     private final static Pattern PLATFORM_PATTERN = Pattern.compile("^http://www\\.(.+)\\.[tv|com]");
 
-    private static Extractor douyuExtractor = new DouyuExtractor();
-    private static Extractor zhanqiExtractor = new ZhanqiExtractor();
-    private static Extractor pandaExtractor = new PandaExtractor();
-
-    private LiveBox() {
-    }
-
-    private static Platform determinePlatform(String url) {
+    public static Platform determinePlatform(String url) {
         Matcher matcher = PLATFORM_PATTERN.matcher(url);
         if (matcher.find()) {
             String domain = matcher.group(1);
@@ -33,19 +23,24 @@ public class LiveBox {
         return null;
     }
 
-    public static Live extractLive(String url) {
+    public static Extractor createExtractor(String url) {
         Platform platform = determinePlatform(url);
         if (platform != null) {
             switch (platform) {
                 case DOUYU:
-                    return douyuExtractor.extract(url);
+                    return new DouyuExtractor();
                 case ZHANQI:
-                    return zhanqiExtractor.extract(url);
+                    return new ZhanqiExtractor();
                 case PANDA:
-                    return pandaExtractor.extract(url);
+                    return new PandaExtractor();
             }
         }
 
         return null;
+    }
+
+    public static void main(String[] args) {
+        Platform platform = determinePlatform("http://www.zhanqi.tv/naigege");
+        System.out.println(platform);
     }
 }
