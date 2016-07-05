@@ -6,8 +6,23 @@
 
     <groupId>com.lean</groupId>
     <artifactId>live-box</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
+
+    <name>Live Box</name>
+    <description>A project that can extract live stream from zhanqi, douyu and pandaTV.</description>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://svn.apache.org/viewvc/maven</url>
+    </scm>
 
     <dependencies>
         <dependency>
