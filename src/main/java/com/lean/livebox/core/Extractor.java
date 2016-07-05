@@ -1,7 +1,5 @@
 package com.lean.livebox.core;
 
-import com.lean.livebox.model.Live;
-
 /**
  * Created by lean on 16/7/5.
  */
