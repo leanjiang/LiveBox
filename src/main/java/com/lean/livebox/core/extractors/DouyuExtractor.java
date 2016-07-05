@@ -20,6 +20,9 @@ public class DouyuExtractor implements Extractor {
     private static final String MIXED_CODE = "1231";
 
     public Live extract(String url) {
+        if (StringUtils.isEmpty(url)) {
+            return null;
+        }
         try {
             final String roomId = extractRoomId(url);
             final String suffix = generateSuffix(roomId);
@@ -72,7 +75,6 @@ public class DouyuExtractor implements Extractor {
     }
 
     private static String extractRoomId(String url) {
-        if (StringUtils.isEmpty(url)) return null;
         int position = url.lastIndexOf("/") + 1;
         return url.substring(position);
     }

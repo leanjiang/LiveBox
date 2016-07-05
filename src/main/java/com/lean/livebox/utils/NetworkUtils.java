@@ -31,7 +31,6 @@ public class NetworkUtils {
             fakeHeaders = new Headers.Builder()
                     .add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
                     .add("Accept-Charset", "UTF-8,*;q=0.5")
-                    .add("Accept-Encoding", "gzip,deflate,sdch")
                     .add("Accept-Language", "en-US,en;q=0.8")
                     .add("User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:13.0) Gecko/20100101 Firefox/13.0")
                     .build();
@@ -53,7 +52,7 @@ public class NetworkUtils {
     }
 
     public static void main(String[] args) throws Exception {
-        String content = loadContent("http://www.douyu.com/api/v1/room/ZSMJ?aid=android&client_sys=android&time=1467699994&auth=418eedd0712dbeb71957db13ccc2ca63");
+        String content = loadContent("http://www.panda.tv/api_room_v2?roomid=2009&pub_key=&_=1467705406221");
         System.out.println(content);
     }
 }
