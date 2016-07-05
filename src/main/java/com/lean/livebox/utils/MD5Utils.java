@@ -27,4 +27,7 @@ public class MD5Utils {
         return null;
     }
 
+    public static void main(String[] args) {
+        System.out.println(Integer.toHexString(1467708159));
+    }
 }
